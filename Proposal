@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You Love Pawan?</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .question-container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #000;
+            margin-bottom: 30px;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .option-btn {
+            background: white;
+            color: black;
+            padding: 15px;
+            border: 2px solid #000;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .response-container {
+            display: none;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .response-1 {
+            background: white;
+            color: black;
+        }
+
+        .response-2 {
+            background: #ff0000;
+            color: white;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        .response-3 {
+            background: #000;
+            color: white;
+        }
+
+        .response-4 {
+            background: #000;
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .input-box {
+            background: white;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            color: black;
+        }
+
+        button[type="submit"] {
+            background: #000;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="question-container" id="questionContainer">
+            <h1>Do you love Pawan?</h1>
+            <div class="options">
+                <button class="option-btn" onclick="handleResponse(1)">1) Yes</button>
+                <button class="option-btn" onclick="handleResponse(2)">2) Definitely Yes</button>
+                <button class="option-btn" onclick="handleResponse(3)">3) No</button>
+                <button class="option-btn" onclick="handleResponse(4)">4) Never</button>
+                <button class="option-btn" onclick="handleResponse(5)">5) Always</button>
+                <button class="option-btn" onclick="handleResponse(6)">6) Sometimes</button>
+                <button class="option-btn" onclick="handleResponse(7)">7) Mostly</button>
+                <button class="option-btn" onclick="handleResponse(8)">8) I don't care</button>
+                <button class="option-btn" onclick="handleResponse(9)">9) Some how</button>
+                <button class="option-btn" onclick="handleResponse(10)">10) Let me think</button>
+            </div>
+        </div>
+
+        <div class="response-container" id="responseContainer"></div>
+    </div>
+
+    <script>
+        function handleResponse(option) {
+            const questionContainer = document.getElementById('questionContainer');
+            const responseContainer = document.getElementById('responseContainer');
+            
+            questionContainer.style.display = 'none';
+            responseContainer.style.display = 'block';
+            responseContainer.className = 'response-container'; // Reset classes
+
+            let content = '';
+            
+            if ([1, 2, 5].includes(option)) {
+                responseContainer.classList.add('response-1');
+                content = '<h2>He loves you too so much</h2>';
+            } else if ([3, 4, 8].includes(option)) {
+                responseContainer.classList.add('response-2');
+                content = '<h2>Get Fuck off Rub your ass on shit</h2>';
+            } else if ([6, 7, 9].includes(option)) {
+                responseContainer.classList.add('response-3');
+                content = `
+                    <h2>Why?</h2>
+                    <form action="mailto:almas05032009@gmail.com" method="post" enctype="text/plain">
+                        <div class="input-box">
+                            <input type="text" name="reason1" placeholder="Reason 1">
+                        </div>
+                        <div class="input-box">
+                            <input type="text" name="reason2" placeholder="Reason 2">
+                        </div>
+                        <div class="reply-section">
+                            <textarea name="reply" rows="4" placeholder="Type your reply here..."></textarea>
+                            <button type="submit">Send</button>
+                        </div>
+                    </form>
+                `;
+            } else if (option === 10) {
+                responseContainer.classList.add('response-4');
+                content = '<p>I don\'t love them who thinks as slow as tortoise</p>';
+            }
+
+            responseContainer.innerHTML = content;
+        }
+    </script>
+</body>
+</html>
